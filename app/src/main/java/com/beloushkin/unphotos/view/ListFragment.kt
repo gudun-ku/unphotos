@@ -13,9 +13,6 @@ import com.beloushkin.unphotos.R
 import com.beloushkin.unphotos.model.Photo
 import com.beloushkin.unphotos.viewmodel.UnsplashViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
-import kotlinx.android.synthetic.main.item_photo.*
-import kotlinx.coroutines.*
-import okhttp3.Dispatcher
 
 
 class ListFragment : Fragment() {

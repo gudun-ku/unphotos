@@ -22,7 +22,22 @@ fun getComplementaryColor(colorToInvert: Int): Int {
         Color.red(colorToInvert), Color.green(colorToInvert),
         Color.blue(colorToInvert), hsv
     )
-    hsv[0] = (hsv[0] + 180) % 360
+    hsv[0] = (hsv[0] + 120) % 360
+    return Color.HSVToColor(hsv)
+}
+
+fun getContrastVersionForColor(color: Int): Int {
+    val hsv = FloatArray(3)
+    Color.RGBToHSV(
+        Color.red(color), Color.green(color), Color.blue(color),
+        hsv
+    )
+    if (hsv[2] < 0.5) {
+        hsv[2] = 0.7f
+    } else {
+        hsv[2] = 0.3f
+    }
+    hsv[1] = hsv[1] * 0.5f
     return Color.HSVToColor(hsv)
 }
 

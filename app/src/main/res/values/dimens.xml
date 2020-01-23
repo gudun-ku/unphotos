@@ -3,7 +3,7 @@
     <dimen name="margin_small_8">8dp</dimen>
     <dimen name="margin_tiny_4">8dp</dimen>
     <dimen name="default_info_top">64dp</dimen>
-    <dimen name="margin_fab_bottom_64">64dp</dimen>
-    <dimen name="margin_fab_right_16">16dp</dimen>
+    <dimen name="margin_large_64">64dp</dimen>
+    <dimen name="margin_standard_16">16dp</dimen>
     <dimen name="margin_fab_bottom_96">96dp</dimen>
 </resources>

@@ -20,7 +20,6 @@ import com.beloushkin.unphotos.util.getProgressDrawable
 import kotlinx.android.synthetic.main.fragment_photo.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions

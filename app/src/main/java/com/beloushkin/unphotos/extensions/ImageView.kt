@@ -19,6 +19,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.beloushkin.unphotos.util.getComplementaryColor
+import com.beloushkin.unphotos.util.getContrastVersionForColor
 
 
 fun ImageView.loadNetworkImage(uri: String?, progressDrawable: CircularProgressDrawable
@@ -50,7 +51,7 @@ fun ImageView.loadNetworkImage(uri: String?, progressDrawable: CircularProgressD
                     Palette.from(it.toBitmap(100,100))
                         .generate { palette ->
                             val intColor = palette?.lightMutedSwatch?.rgb ?: 0
-                            listenerFunc.invoke(getComplementaryColor(intColor))
+                            listenerFunc.invoke(getContrastVersionForColor(getComplementaryColor(intColor)))
                         }
                 }
                 return false
