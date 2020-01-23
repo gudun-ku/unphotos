@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:navigationBarColor" tools:targetApi="21">@color/colorPrimary
+        </item>
+        <item name="android:statusBarColor" tools:targetApi="21">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MainTheme" parent="AppTheme">
+        <item name="actionBarStyle">@style/MyTheme.ActionBar</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="19">true</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="19">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="MyTheme.ActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="elevation" tools:targetApi="lollipop">0dp</item>
+        <item name="background">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+</resources>
