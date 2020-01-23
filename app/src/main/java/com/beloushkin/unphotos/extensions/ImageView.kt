@@ -1,10 +1,11 @@
 package com.beloushkin.unphotos.extensions
 
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
+import androidx.palette.graphics.Palette
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
-import com.beloushkin.unphotos.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
@@ -12,15 +13,51 @@ import com.bumptech.glide.request.RequestOptions
 import kotlinx.coroutines.*
 import java.io.File
 import java.io.FileOutputStream
+import androidx.core.graphics.drawable.toBitmap
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import com.beloushkin.unphotos.util.getComplementaryColor
 
-fun ImageView.loadNetworkImage(uri: String?, progressDrawable: CircularProgressDrawable) {
+
+fun ImageView.loadNetworkImage(uri: String?, progressDrawable: CircularProgressDrawable
+                               , listenerFunc: (Int) -> Unit ) {
     val options = RequestOptions()
         .placeholder(progressDrawable)
-        .error(R.drawable.placeholder)
+        .error(com.beloushkin.unphotos.R.drawable.placeholder)
     Glide.with(context)
         .setDefaultRequestOptions(options)
         .load(uri)
+        .addListener(object: RequestListener<Drawable> {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                return false
+            }
+
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                resource?.let {
+                    Palette.from(it.toBitmap(100,100))
+                        .generate { palette ->
+                            val intColor = palette?.lightMutedSwatch?.rgb ?: 0
+                            listenerFunc.invoke(getComplementaryColor(intColor))
+                        }
+                }
+                return false
+            }
+        })
         .into(this)
+
 }
 
 fun ImageView.saveNetworkImageToFileAsync(uri: String?, file: File):Deferred<File?> {
@@ -51,3 +88,4 @@ fun ImageView.saveNetworkImageToFileAsync(uri: String?, file: File):Deferred<Fil
     }
 
 }
+

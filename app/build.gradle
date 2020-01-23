@@ -34,9 +34,9 @@ android {
 
 def lifeCycleExtensionVersion = '1.1.1'
 def supportVersion = '29.0.0'
-def navVersion = '2.2.0-rc04'
+def navVersion = '2.2.0'
 def retrofitVersion = '2.3.0'
-def glideVersion = '4.9.0'
+def glideVersion = '4.10.0'
 
 
 dependencies {
@@ -60,6 +60,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glideVersion"
 
     implementation 'ru.gildor.coroutines:kotlin-coroutines-retrofit:1.1.0'
+    implementation "com.android.support:palette-v7:$supportVersion"
 
     implementation 'com.github.hotchemi:permissionsdispatcher:4.1.0'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:4.1.0'

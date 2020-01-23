@@ -67,16 +67,22 @@ class PhotoFragment : Fragment(),View.OnClickListener {
         }
     }
 
+    private var usePalette: (intColor: Int) -> Unit = {
+        tvAuthor.setTextColor(it)
+        tvDescription.setTextColor(it)
+    }
+
+    private var doNothing: (intColor: Int) -> Unit = {}
+
     private fun loadFullImage(photo: Photo?, context: Context) {
         photo?.let {
-            fullImage.loadNetworkImage(photo.url?.regular, getProgressDrawable(context))
+            fullImage.loadNetworkImage(photo.url?.regular, getProgressDrawable(context), usePalette)
         }
-
     }
 
     private fun loadUserImage(user: User?, context: Context) {
         user?.let {
-            userAvatar.loadNetworkImage(it.profileImage?.small, getProgressDrawable(context))
+            userAvatar.loadNetworkImage(it.profileImage?.small, getProgressDrawable(context),doNothing)
         }
 
     }

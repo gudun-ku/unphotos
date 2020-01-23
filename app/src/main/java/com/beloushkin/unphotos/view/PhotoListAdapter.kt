@@ -9,6 +9,7 @@ import com.beloushkin.unphotos.R
 import com.beloushkin.unphotos.extensions.loadNetworkImage
 import com.beloushkin.unphotos.model.Photo
 import com.beloushkin.unphotos.util.getProgressDrawable
+import kotlinx.android.synthetic.main.fragment_photo.*
 import kotlinx.android.synthetic.main.item_photo.view.*
 
 class PhotoListAdapter(
@@ -37,7 +38,7 @@ class PhotoListAdapter(
     private fun bind(view:View, data:Photo) {
         view.photoDescription.text = data.description
         view.photoAuthor.text = data.user?.username
-        view.photoImage.loadNetworkImage(data.url?.regular, getProgressDrawable(view.context))
+        view.photoImage.loadNetworkImage(data.url?.regular, getProgressDrawable(view.context),doNothing)
 
         view.photoLayout.setOnClickListener {
             val action = ListFragmentDirections.actionDetail(data)
@@ -46,4 +47,6 @@ class PhotoListAdapter(
     }
 
     class PhotoViewHolder(var view: View): RecyclerView.ViewHolder(view)
+
+    private var doNothing: (intColor: Int) -> Unit = {}
 }
