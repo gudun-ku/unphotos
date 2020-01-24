@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#3935A0</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorWhite">#F3DEDEDE</color>
+    <color name="colorProgress">#AAEE9CC0</color>
 </resources>
